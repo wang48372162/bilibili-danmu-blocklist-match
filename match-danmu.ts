@@ -16,14 +16,12 @@ if (!fs.existsSync('bilibili.block.json')) {
 
 enum Type { Text, Regex, User }
 
-const blocklist = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'bilibili.block.json'), {
-  encoding: 'utf-8',
-})) as {
+const blocklist: {
   id: number
   type: Type
   filter: string
   opened: boolean
-}[]
+}[] = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'bilibili.block.json'), 'utf-8'))
 
 let matchedCount = 0
 
